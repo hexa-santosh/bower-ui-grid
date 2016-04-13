@@ -1852,6 +1852,9 @@ angular.module('ui.grid')
             order: 301 + index * 2 + 1
           };
           service.setMenuItemTitle( menuItem, colDef, $scope.grid );
+          if(colDef.name === "groupColumn") {
+            return;
+          }
           showHideColumns.push( menuItem );
         }
       });
@@ -18972,7 +18975,7 @@ module.filter('px', function() {
          */
         if ( col.colDef.groupingShowGroupingMenu !== false ){
           if (!gridUtil.arrayContainsObjectWithProperty(col.menuItems, 'name', 'ui.grid.grouping.group')) {
-            col.menuItems.push(groupColumn);
+            //col.menuItems.push(groupColumn);
           }
 
           if (!gridUtil.arrayContainsObjectWithProperty(col.menuItems, 'name', 'ui.grid.grouping.ungroup')) {
@@ -18990,10 +18993,10 @@ module.filter('px', function() {
          */
         if ( col.colDef.groupingShowAggregationMenu !== false ){
           angular.forEach(uiGridTreeBaseService.nativeAggregations(), function(aggregationDef, name){
-            addAggregationMenu(name);
+            //addAggregationMenu(name);
           });
           angular.forEach(gridOptions.treeCustomAggregations, function(aggregationDef, name){
-            addAggregationMenu(name, aggregationDef.menuTitle);
+            //addAggregationMenu(name, aggregationDef.menuTitle);
           });
 
           if (!gridUtil.arrayContainsObjectWithProperty(col.menuItems, 'name', 'ui.grid.grouping.aggregateRemove')) {
