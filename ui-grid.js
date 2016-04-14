@@ -1852,7 +1852,7 @@ angular.module('ui.grid')
             order: 301 + index * 2 + 1
           };
           service.setMenuItemTitle( menuItem, colDef, $scope.grid );
-          if(colDef.name === "groupColumn") {
+          if(colDef.name === "groupColumn" || "placementtype.id") {
             return;
           }
           showHideColumns.push( menuItem );
