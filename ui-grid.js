@@ -1852,10 +1852,20 @@ angular.module('ui.grid')
             order: 301 + index * 2 + 1
           };
           service.setMenuItemTitle( menuItem, colDef, $scope.grid );
-          if(colDef.name === "groupColumn" || "placementtype.id") {
-            return;
-          }
-          showHideColumns.push( menuItem );
+           if(colDef.name != "placementtype.id" && colDef.name != "groupColumn") {
+              if($scope.grid.appScope.excludeGridColumns) {
+                 var excludeColumns =  $scope.grid.appScope.excludeGridColumns[$scope.grid.options.gridType]    
+                 var index = 0
+                 for(; index < excludeColumns.length; index++) {
+                     if(colDef.name === excludeColumns[index]) {
+                        break;                    
+                     }
+                 }
+                 if(index == excludeColumns.length) {
+                     showHideColumns.push( menuItem );
+                 }
+              } 
+          } 
         }
       });
       return showHideColumns;
