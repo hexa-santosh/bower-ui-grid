@@ -1864,7 +1864,9 @@ angular.module('ui.grid')
                  if(index == excludeColumns.length) {
                      showHideColumns.push( menuItem );
                  }
-              } 
+              } else {
+                  showHideColumns.push( menuItem );
+              }
           } 
         }
       });
